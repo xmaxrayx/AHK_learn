@@ -1,0 +1,31 @@
+;Capslock::Send {LWin down}{LCtrl down}{Left}{LWin up}{LCtrl up}
+$e::
+KeyWait, e, T.5 ; 0.4 second
+			
+				IF ErrorLevel ;long press
+				{
+					; Define a variable to keep track of the direction
+							
+							direction := "left"
+							
+							; Toggle the direction between left and right
+							if (direction = "left") 
+							{
+								direction := "right"
+								Send {LWin down}{LCtrl down}{%direction%}{LWin up}{LCtrl up}
+							}
+
+							else
+							{
+								direction := "left"
+								Send {LWin down}{LCtrl down}{%direction%}{LWin up}{LCtrl up}
+							}
+								return
+				}
+
+
+;change here the shortcut
+Else Send, {}
+KeyWait, e
+Return
+
